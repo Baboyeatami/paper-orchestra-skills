@@ -11,6 +11,13 @@ These skills do not install PaperOrchestra. PaperOrchestra still needs its own
 Python 3.11 conda environment named `paper_orchestra` and a `.env` with model
 provider keys. See the upstream repository for that setup.
 
+If pip backtracks on `pydantic-core`, install the dependencies with the pinned
+`constraints.txt` in this repository:
+
+```sh
+pip install --only-binary=:all: -c constraints.txt -r paper-orchestra/requirements.txt
+```
+
 ## Install
 
 Copy both skill folders into your OpenCode skills directory:

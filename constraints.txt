@@ -1,0 +1,6 @@
+# Use with PaperOrchestra on Python 3.11 / macOS arm64 to avoid pip resolver backtracking.
+pydantic==2.12.5
+pydantic-core==2.41.5
+google-genai==3.6.1
+openai==3.58.0
+streamlit==1.67.0
