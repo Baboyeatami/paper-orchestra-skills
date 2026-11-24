@@ -23,7 +23,8 @@ cp -R paper-orchestra-jamie ~/.config/opencode/skills/
 Optional environment variables:
 
 ```sh
-export PAPER_ORCHESTRA_DIR=/path/to/paper-orchestra
+# Optional: auto-detected at ~/.local/share/paper-orchestra
+export PAPER_ORCHESTRA_DIR="$HOME/.local/share/paper-orchestra"
 export PAPER_PROJECT_DIR=/path/to/research-project
 export PAPER_LATEX_TEMPLATE_DIR=/path/to/ieee-template
 export PAPER_WRITER_MODEL=gemini-3.1-pro-preview

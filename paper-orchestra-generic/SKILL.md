@@ -17,7 +17,8 @@ Stop and report the blocker instead of guessing if any precondition fails.
 - `PROJECT_DIR` = `$PAPER_PROJECT_DIR` if set, otherwise `$PWD`. All inputs and
   outputs live under this folder.
 - `PO_DIR` = `$PAPER_ORCHESTRA_DIR` if set. Otherwise, if `$PWD/paper_writing_cli.py`
-  exists, use `$PWD`. Otherwise run
+  exists, use `$PWD`. Otherwise, if `$HOME/.local/share/paper-orchestra/paper_writing_cli.py`
+  exists, use that. Otherwise run
   `find "$HOME" -maxdepth 7 -name paper_writing_cli.py 2>/dev/null | head -1`.
   If nothing is found, stop: "PaperOrchestra not found. Set PAPER_ORCHESTRA_DIR
   to the folder containing paper_writing_cli.py."
@@ -34,9 +35,9 @@ Stop and report the blocker instead of guessing if any precondition fails.
    create commands from the upstream PaperOrchestra README.
 2. Confirm `$PO_DIR/.env` exists. Check variable **names only** with
    `grep -oE '^[A-Z_]+=' "$PO_DIR/.env" | sort -u`. Never print or echo values.
-3. Confirm at least one provider credential name is present:
-   `GEMINI_API_KEY`, `OPENAI_API_KEY`, or `VERTEX_AI_PROJECT`. If none is present,
-   stop and tell the user which one to add.
+3. Confirm at least one provider credential has a non-empty value:
+   `grep -qE '^(GEMINI_API_KEY|OPENAI_API_KEY|VERTEX_AI_PROJECT)=.+' "$PO_DIR/.env"`.
+   If none is present, stop and tell the user which key to fill in `.env`.
 4. Required inputs in `PROJECT_DIR`: `idea_sparse.md` and `experimental_log.md`.
    Optional: `figures/`, `guardrails.md`.
    If either required file is missing, copy the matching file from this skill's
